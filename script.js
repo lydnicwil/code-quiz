@@ -13,10 +13,15 @@ var showStart = document.querySelector("#startSection");
 var showQuestions = document.querySelector("#questionSection");
 var showForm = document.querySelector("#formSection");
 var showHighscore = document.querySelector("#highscoreSection");
-
 var highscoreForm = document.querySelector("#highscore");
 var highscoreName = document.querySelector("#highscoreName");
 var highscoreList = document.querySelector("#highscoreList");
 
 var reset = document.querySelector("#resetButton");
 var restart = document.querySelector("#restartButton");
+
+var timerCountdown = 60;
+var countdown;
+var questionNumber = 0;
+var correctAnswer = "";
+var quizFinished = false;
