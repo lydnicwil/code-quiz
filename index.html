@@ -1,0 +1,40 @@
+!DOCTYPE html>
+<html>
+  <head>
+    <title>Code Quiz</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <header>
+        <div class="background-blue flex padding-top-bottom">
+            <button id="viewHighscore" class="header-font header-col inline-flex justify-content-center header-button">View High Score</button>
+            <div class="header-font header-col inline-flex justify-content-center">Time Left: 
+                <p id="timer" class="header-font">0</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="background-blue full-height">
+      <section id="startSection" class="background-blue grid justify-content-center">
+        <p class="question-font text-align-center margin-top-bottom">
+          Welcome to the quiz! You will have 30 seconds to answer 5 questions about Javascript/ Coding. Any remaining time will be your final score, good luck!
+        </p>
+        <button id="startGame" class="body-font margin-top-bottom padding-top-bottom">Begin Quiz</button>
+      </section>
+
+      <section id="questionSection" class="background-blue grid justify-content-center none">
+        <p id="theQuestion" class="question-font inline-flex margin-top-bottom">Here is the question</p>
+        <button id="answerOne" class="question-font inline-flex justify-content-center margin-top-bottom padding-top-bottom">Answer One</button>
+        <button id="answerTwo" class="question-font inline-flex justify-content-center margin-top-bottom padding-top-bottom">Answer Two</button>
+        <button id="answerThree" class="question-font inline-flex justify-content-center margin-top-bottom padding-top-bottom">Answer Three</button>
+        <button id="answerFour" class="question-font inline-flex justify-content-center margin-top-bottom padding-top-bottom">Answer Four</button>
+        <p id="correctness" class="question-font inline-flex justify-content-center margin-top-bottom" ></p>
+      </section>
+
+
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
