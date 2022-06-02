@@ -76,3 +76,9 @@ var fifthQuestion =
     answer: answerTwo
 };
 
+var questions = [firstQuestion, secondQuestion, thirdQuestion, fourthQuestion, fifthQuestion];
+var highscores = [];
+
+UpdateTimerText(0);
+UpdateButtonText();
+GetHighscores();
