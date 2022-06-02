@@ -20,7 +20,7 @@ var highscoreList = document.querySelector("#highscoreList");
 var reset = document.querySelector("#resetButton");
 var restart = document.querySelector("#restartButton");
 
-var timerCountdown = 60;
+var timerCountdown = 30;
 var countdown;
 var questionNumber = 0;
 var correctAnswer = "";
