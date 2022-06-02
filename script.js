@@ -82,3 +82,26 @@ var highscores = [];
 UpdateTimerText(0);
 UpdateButtonText();
 GetHighscores();
+
+startGameButton.addEventListener("click", function(){
+    MakeVisible(showQuestions, showStart);
+    countdown = setInterval(TimerCountdown, 1000);});
+
+viewHighscore.addEventListener("click", function(){
+    if(!showStart.classList.contains("none")){
+        MakeVisible(showHighscore, showStart);}
+    else if(!showQuestions.classList.contains("none")){
+        MakeVisible(showHighscore, showQuestions);}
+    else if(!showForm.classList.contains("none")){
+        MakeVisible(showHighscore, showForm);}
+})
+
+answerOne.addEventListener("click", function(event){event.preventDefault(); CheckAnswer(answerOne)});
+answerTwo.addEventListener("click", function(event){event.preventDefault(); CheckAnswer(answerTwo)});
+answerThree.addEventListener("click", function(event){event.preventDefault(); CheckAnswer(answerThree)});
+answerFour.addEventListener("click", function(event){event.preventDefault(); CheckAnswer(answerFour)});
+
+highscoreForm.addEventListener("submit", HighscoreSubmit)
+reset.addEventListener("click", ResetLocal)
+
+
