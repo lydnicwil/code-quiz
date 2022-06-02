@@ -7,7 +7,7 @@ var answerOne = document.querySelector("#choiceOne");
 var answerTwo = document.querySelector("#choiceTwo");
 var answerThree = document.querySelector("#choiceThree");
 var answerFour = document.querySelector("#choiceFour");
-var correctness = document.querySelector("#correct");
+var correctness = document.querySelector("#isCorrect");
 
 var showStart = document.querySelector("#startSection");
 var showQuestions = document.querySelector("#questionSection");
@@ -104,4 +104,116 @@ answerFour.addEventListener("click", function(event){event.preventDefault(); Che
 highscoreForm.addEventListener("submit", HighscoreSubmit)
 reset.addEventListener("click", ResetLocal)
 
+function GetHighscores()
+{
+    if(localStorage.getItem("highscores"))
+    {
+        var printList = JSON.parse(localStorage.getItem("highscores"));
 
+        for(var i = 0; i < printList.length; i++)
+        {
+            var listItem = document.createElement("li");
+            listItem.classList.add("body-font");
+            listItem.textContent = printList[i];
+            highscoreList.append(listItem);
+            highscores[highscores.length] = listItem.textContent;
+        }
+    }
+};
+
+function HighscoreSubmit(event)
+{
+    event.preventDefault();
+    var listItem = document.createElement("li");
+    listItem.textContent = highscoreName.value + ": " + timerCountdown;
+    listItem.classList.add("body-font");
+    highscores[highscores.length] = listItem.textContent;
+    localStorage.setItem("highscores", JSON.stringify(highscores));
+    highscoreList.append(listItem);
+    highscoreName.value = "";
+    MakeVisible(showHighscore, showForm);
+};
+
+function CheckAnswer(pressedButton)
+{
+    if(correctAnswer === pressedButton){
+        if(questionNumber + 1 === questions.length){
+            UpdateTimerText(0);
+            quizFinished = true;
+        }
+        else
+        {   correctness.textContent = "Correct!";
+            questionNumber++;
+            UpdateButtonText();}}
+    else
+    {
+        if(timerCountdown - 2 >= 0)
+        {UpdateTimerText(2);
+            correctness.textContent = "Incorrect!";}
+        else
+        {UpdateTimerText(Math.abs(timerCountdown));}}};
+
+function MakeVisible(divToShow, divToHide)
+{   divToHide.classList.add("none");
+    divToShow.classList.remove("none");
+};
+
+function ResetLocal(event)
+{
+    event.preventDefault();
+    localStorage.clear();
+    while (highscoreList.firstChild) 
+    {   highscoreList.removeChild(highscoreList.firstChild);}};
+
+function RestartGame(event)
+{
+    event.preventDefault();
+    
+    timerCountdown = 60;
+    questionNumber = 0;
+    UpdateTimerText(0);
+    quizFinished = false;
+    UpdateButtonText();
+    MakeVisible(showStart, showHighscore);
+};
+
+function TimerCountdown()
+{    
+    if(timerCountdown > 0)
+    {
+        UpdateTimerText(1);
+    }
+    else if(timerCountdown <= 0)
+    {
+        UpdateTimerText(Math.abs(timerCountdown) - timerCountdown);
+        clearInterval(countdown);
+        MakeVisible(showForm, showQuestions);
+    }
+    if(quizFinished === true)
+    {
+        UpdateTimerText(0);
+        clearInterval(countdown);
+        MakeVisible(showForm, showQuestions);
+    }
+    if(!showHighscore.classList.contains("none"))
+    {
+        UpdateTimerText(0);
+        clearInterval(countdown);
+    }
+};
+
+function UpdateButtonText()
+{
+    theQuestion.textContent = questions[questionNumber].question;
+    answerOne.innerHTML = questions[questionNumber].firstAnswer;
+    answerTwo.innerHTML = questions[questionNumber].secondAnswer;
+    answerThree.innerHTML = questions[questionNumber].thirdAnswer;
+    answerFour.innerHTML = questions[questionNumber].fourthAnswer;
+    correctAnswer = questions[questionNumber].answer;   
+};
+
+function UpdateTimerText(subtractTime)
+{
+    timerCountdown = timerCountdown - subtractTime;
+    timer.textContent = timerCountdown;
+};
