@@ -33,7 +33,24 @@
         <p id="correctness" class="question-font inline-flex justify-content-center margin-top-bottom" ></p>
       </section>
 
+      <section id="formSection" class="none">
+        <form id="highscore" class="grid justify-content-center">
+          <label for="highscoreName" class="body-font text-align-center margin-top-bottom">Enter your name</label>
+          <input type="text" id="highscoreName" name="highscoreName" class="body-font margin-top-bottom">
+          <button class="body-font margin-top-bottom padding-top-bottom margin-left-right padding-left-right">Submit</button>
+        </form>
+      </section>
 
+      <section id="highscoreSection" class="background-blue justify-content-center none">
+        <ul id="highscoreList" class="text-align-center">
+
+        </ul>
+        <div class="flex justify-content-center margin-top-bottom">
+          <button id="resetButton" class="body-font col margin-top-bottom padding-top-bottom margin-left-right padding-left-right">Reset</button>
+          <button id="restartButton" class="body-font col padding-top-bottom margin-left-right padding-left-right">Restart</button>
+        </div>  
+      </section>
+      
     </main>
     <script src="script.js"></script>
   </body>
